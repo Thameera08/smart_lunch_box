@@ -1,125 +1,191 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_lunch_box/screen/add.dart';
+import 'package:smart_lunch_box/screen/dashboard.dart';
+import 'package:smart_lunch_box/screen/home.dart';
+import 'package:smart_lunch_box/screen/profile.dart';
+import 'package:smart_lunch_box/screen/settings.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class _HomeScreenState extends State<HomeScreen> {
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        leading: IconButton(
+          icon: const Icon(Icons.home),
+          onPressed: () {
+            setState(() {
+              index = 0; // Set the index to 0 when the home icon is pressed
+            });
+          },
         ),
+        actions: [
+          TextButton(
+            onPressed: () {},
+            style: TextButton.styleFrom(foregroundColor: Colors.white),
+            child: const Text(
+              "", // user name.
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          IconButton(
+            icon: const Icon(Icons.person_outline_rounded),
+            onPressed: () {},
+          ),
+          PopupMenuButton(
+            icon: const Icon(Icons.menu),
+            onSelected: (value) {
+              switch (value) {
+                case 1:
+                  debugPrint("Home Selected");
+                  setState(() {
+                    index =
+                        0; // Set the index to 0 when "Home" is selected from the popup menu
+                  });
+                  break;
+                case 2:
+                  debugPrint("My Dashboard selected");
+                  setState(() {
+                    index =
+                        1; // Set the index to 1 when "Dashboard" is selected from the popup menu
+                  });
+                  break;
+                case 3:
+                  debugPrint("Find add selected");
+                  setState(() {
+                    index =
+                        2; // Set the index to 2 when "Add" is selected from the popup menu
+                  });
+                  break;
+                case 4:
+                  debugPrint("Profile selected");
+                  setState(() {
+                    index =
+                        3; // Set the index to 3 when "Profile" is selected from the popup menu
+                  });
+                  break;
+                case 5:
+                  debugPrint("Settings Selected");
+                  setState(() {
+                    index =
+                        4; // Set the index to 4 when "Settings" is selected from the popup menu
+                  });
+                  break;
+                default:
+                  debugPrint("Nothing Selected");
+              }
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 1,
+                child: Text("Home"),
+              ),
+              const PopupMenuItem(
+                value: 2,
+                child: Text("Dashboard"),
+              ),
+              const PopupMenuItem(
+                value: 3,
+                child: Text("Add"),
+              ),
+              const PopupMenuItem(
+                value: 4,
+                child: Text("Profile"),
+              ),
+              const PopupMenuItem(
+                value: 5,
+                child: Text("Settings"),
+              ),
+            ],
+          ),
+        ],
+        title: const Text("Smart Lunch Box"),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      backgroundColor: Color.fromARGB(255, 65, 114, 213),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: [
+          Icon(
+            Icons.home,
+            size: 30,
+          ),
+          Icon(
+            Icons.dashboard,
+            size: 30,
+          ),
+          Icon(
+            Icons.add,
+            size: 30,
+          ),
+          Icon(
+            Icons.person,
+            size: 30,
+          ),
+          Icon(
+            Icons.settings,
+            size: 30,
+          ),
+        ],
+        index: index,
+        onTap: (selectedIndex) {
+          setState(() {
+            index = selectedIndex;
+          });
+        },
+        height: 60,
+        backgroundColor: Colors.transparent,
+        animationDuration: const Duration(milliseconds: 300),
+        buttonBackgroundColor: Colors.white,
+        color: Colors.white,
+      ),
+      body: Container(
+        color: Color.fromARGB(255, 65, 114, 213),
+        width: double.infinity,
+        height: double.infinity,
+        alignment: Alignment.center,
+        child: _getSelectedWidget(index),
+      ),
     );
+  }
+
+  Widget _getSelectedWidget(int index) {
+    switch (index) {
+      case 0:
+        return const Home(); // Train Details
+      case 1:
+        return const Dashboard(); // Home
+      case 2:
+        return const Add(); // Select Train
+      case 3:
+        return const Profile(); // Help Others
+      case 4:
+        return const Settings(); // Train History
+      default:
+        return const Home(); // Home
+    }
   }
 }
