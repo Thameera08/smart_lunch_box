@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
     );
@@ -26,6 +26,7 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -125,10 +126,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         title: const Text("Smart Lunch Box"),
+        backgroundColor:const Color.fromARGB(255, 217, 215, 103),
       ),
-      backgroundColor: Color.fromARGB(255, 65, 114, 213),
+      backgroundColor: const Color.fromARGB(255, 106, 109, 12),
       bottomNavigationBar: CurvedNavigationBar(
-        items: [
+        items: const [
           Icon(
             Icons.home,
             size: 30,
@@ -163,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.white,
       ),
       body: Container(
-        color: Color.fromARGB(255, 65, 114, 213),
+        color: const Color.fromARGB(255, 106, 109, 12),
         width: double.infinity,
         height: double.infinity,
         alignment: Alignment.center,
