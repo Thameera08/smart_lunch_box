@@ -10,11 +10,24 @@ class Dashboard extends StatelessWidget {
       child: Table(
         defaultColumnWidth: FixedColumnWidth(120.0),
         border: TableBorder.all(
-            color: Colors.black, style: BorderStyle.solid, width: 2),
+            color: Colors.white, style: BorderStyle.solid, width: 2),
         children: [
           TableRow(children: [
-            Column(
-                children: [Text('Website', style: TextStyle(fontSize: 20.0))]),
+            Column(children: [
+              Text('Carbohydrates',
+                  style: TextStyle(fontSize: 20.0, color: Colors.white))
+            ]),
+            Column(children: [
+              Text('Fats',
+                  style: TextStyle(fontSize: 20.0, color: Colors.white))
+            ]),
+            Column(children: [
+              Text('Protein',
+                  style: TextStyle(fontSize: 20.0, color: Colors.white))
+            ]),
+            TableRow(children: [
+              Column(children: [Text('')],)
+            ])
           ]),
         ],
       ),
