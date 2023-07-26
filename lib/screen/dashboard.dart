@@ -5,35 +5,17 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(24.0),
-      child: Column(
+    return Container(
+      margin: EdgeInsets.all(20),
+      child: Table(
+        defaultColumnWidth: FixedColumnWidth(120.0),
+        border: TableBorder.all(
+            color: Colors.black, style: BorderStyle.solid, width: 2),
         children: [
-          Text(
-            ' Dashboard',
-            style: TextStyle(
-              fontSize: 40,
-              color: Color.fromARGB(255, 53, 52, 52),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          CircleAvatar(
-            radius: 70,
-            child: Icon(
-              Icons.dashboard_customize_rounded,
-              size: 120,
-            ),
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          Text(
-            'Summerize the inputs',
-            style: TextStyle(fontSize: 30, color: Colors.white),
-          ),
+          TableRow(children: [
+            Column(
+                children: [Text('Website', style: TextStyle(fontSize: 20.0))]),
+          ]),
         ],
       ),
     );
