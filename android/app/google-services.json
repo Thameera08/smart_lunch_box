@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "632431509181",
+    "project_id": "smart-lunch-box",
+    "storage_bucket": "smart-lunch-box.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632431509181:android:3a08533cd57fd6435581d4",
+        "android_client_info": {
+          "package_name": "com.example.smart_lunch_box"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCvWtd3NTRXvfHXHb9rMa20p0n6Tz76pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
