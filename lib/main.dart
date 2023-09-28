@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_lunch_box/components/colors.dart';
 import 'package:smart_lunch_box/screen/home.dart';
 
 void main() {
@@ -10,10 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      title: 'Smart Lunch Box',
+      theme: ThemeData(
+        primaryColor: Colors.black54,
+        primarySwatch: customMaterialColor,
+      ),
+      home: MealWeightEntryPage(),
     );
   }
 }
-
