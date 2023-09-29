@@ -7,7 +7,7 @@ class CaloriesPage extends StatefulWidget {
   final double realWeight2;
   final double realWeight3;
 
-  const CaloriesPage({
+      CaloriesPage({
     required this.realWeight1,
     required this.realWeight2,
     required this.realWeight3,
@@ -166,7 +166,6 @@ class _CaloriesPageState extends State<CaloriesPage> {
                         // ignore: prefer_const_constructors
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          // ignore: prefer_const_constructors
                           child: Text(
                             'Item',
                             style: TextStyle(

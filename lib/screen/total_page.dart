@@ -6,68 +6,128 @@ class TotalPage extends StatelessWidget {
   // ignore: prefer_const_constructors_in_immutables
   TotalPage({required this.totalNutrition});
 
+  // Define a function to create a TableCell with borders
+  TableCell _buildTableCell(String text, {bool isHeader = false}) {
+    return TableCell(
+      child: Container(
+        padding: EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Colors.black,
+            width: 1.0,
+          ),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text("Total Page"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Total Nutritional Information
+              Text(
+                'Total Nutritional Information:',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 2, 86, 5),
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+
+              // Create a table for nutritional data
+              Center(
+                child: Table(
+                  defaultColumnWidth: IntrinsicColumnWidth(),
+                  border: TableBorder.all(
+                    color: Colors.black,
+                    width: 1.0,
+                  ),
+                  children: [
+                    // Nutrition row - Calories
+                    TableRow(
+                      children: [
+                        _buildTableCell('Nutrition', isHeader: true),
+                        _buildTableCell('Total', isHeader: true),
+                      ],
+                    ),
+                    // Nutrition row - Calories
+                    TableRow(
+                      children: [
+                        _buildTableCell('Calories:'),
+                        _buildTableCell(
+                          totalNutrition.calories.toStringAsFixed(2),
+                        ),
+                      ],
+                    ),
+                    // Nutrition row - Total Fat
+                    TableRow(
+                      children: [
+                        _buildTableCell('Total Fat (g):'),
+                        _buildTableCell(
+                          totalNutrition.totalFat.toStringAsFixed(2),
+                        ),
+                      ],
+                    ),
+                    // Nutrition row - Total Carbohydrates
+                    TableRow(
+                      children: [
+                        _buildTableCell('Total Carbohydrates (g):'),
+                        _buildTableCell(
+                          totalNutrition.totalCarbohydrates.toStringAsFixed(2),
+                        ),
+                      ],
+                    ),
+                    // Nutrition row - Total Protein
+                    TableRow(
+                      children: [
+                        _buildTableCell('Total Protein (g):'),
+                        _buildTableCell(
+                          totalNutrition.protein.toStringAsFixed(2),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        child: Row(
           children: [
-            // ignore: prefer_const_constructors
-            Text(
-              'Total Nutritional Information:',
-              textAlign: TextAlign.center,
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                // ignore: prefer_const_constructors
-                color: Color.fromARGB(255, 2, 86, 5),
-              ),
-            ),
-            Text(
-              'Total Calories: ${totalNutrition.calories.toStringAsFixed(2)}',
-              textAlign: TextAlign.center,
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 212, 161, 21),
-              ),
-            ),
-            Text(
-              'Total Fat: ${totalNutrition.totalFat.toStringAsFixed(2)} g',
-              textAlign: TextAlign.center,
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 212, 161, 21),
-              ),
-            ),
-            Text(
-              'Total Carbohydrates: ${totalNutrition.totalCarbohydrates.toStringAsFixed(2)} g',
-              textAlign: TextAlign.center,
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 212, 161, 21),
-              ),
-            ),
-            Text(
-              'Total Protein: ${totalNutrition.protein.toStringAsFixed(2)} g',
-              textAlign: TextAlign.center,
-              // ignore: prefer_const_constructors
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                // ignore: prefer_const_constructors
-                color: Color.fromARGB(255, 212, 161, 21),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "Powerd by 13975 Pvt (Ltd)",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blueGrey,
+                  ),
+                ),
               ),
             ),
           ],
