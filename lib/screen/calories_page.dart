@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animated_button/flutter_animated_button.dart';
+import 'package:smart_lunch_box/screen/total_page.dart';
 
 class CaloriesPage extends StatefulWidget {
   final double realWeight1;
@@ -12,6 +14,7 @@ class CaloriesPage extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _CaloriesPageState createState() => _CaloriesPageState();
 }
 
@@ -29,6 +32,13 @@ class MealInfo {
     required this.totalCarbohydrates,
     required this.protein,
   });
+}
+
+class TotalNutrition {
+  double calories = 0.0;
+  double totalFat = 0.0;
+  double totalCarbohydrates = 0.0;
+  double protein = 0.0;
 }
 
 class _CaloriesPageState extends State<CaloriesPage> {
@@ -79,6 +89,8 @@ class _CaloriesPageState extends State<CaloriesPage> {
   double totalCarbohydrates3 = 0.0;
   double protein3 = 0.0;
 
+  TotalNutrition totalNutrition = TotalNutrition();
+
   void calculateNutrition(String selectedMealMethod, double selectedWeight) {
     MealInfo selectedMeal = mealInfoMap[selectedMealMethod]!;
     double calories = (selectedMeal.calories / 100) * selectedWeight;
@@ -104,6 +116,12 @@ class _CaloriesPageState extends State<CaloriesPage> {
         totalCarbohydrates3 = totalCarbohydrates;
         protein3 = protein;
       }
+
+      totalNutrition.calories = calories1 + calories2 + calories3;
+      totalNutrition.totalFat = totalFat1 + totalFat2 + totalFat3;
+      totalNutrition.totalCarbohydrates =
+          totalCarbohydrates1 + totalCarbohydrates2 + totalCarbohydrates3;
+      totalNutrition.protein = protein1 + protein2 + protein3;
     });
   }
 
@@ -111,7 +129,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calories Page'),
+        title: const Text('Nutrition Values Page'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -121,10 +139,11 @@ class _CaloriesPageState extends State<CaloriesPage> {
             children: [
               const Text(
                 'MEAL CHART:',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  color: Color.fromARGB(255, 3, 60, 5),
                 ),
               ),
               const SizedBox(
@@ -138,11 +157,16 @@ class _CaloriesPageState extends State<CaloriesPage> {
                   style: BorderStyle.solid,
                 ),
                 children: [
+                  // ignore: prefer_const_constructors
                   TableRow(
+                    // ignore: prefer_const_literals_to_create_immutables
                     children: [
+                      // ignore: prefer_const_constructors
                       TableCell(
+                        // ignore: prefer_const_constructors
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
+                          // ignore: prefer_const_constructors
                           child: Text(
                             'Item',
                             style: TextStyle(
@@ -344,31 +368,27 @@ class _CaloriesPageState extends State<CaloriesPage> {
               ),
 
               SizedBox(height: 8),
-              ElevatedButton.icon(
-                onPressed: () {
-                  calculateNutrition(selectedMealMethod1, selectedWeight1);
-                },
-                icon: Icon(Icons.rice_bowl_rounded),
-                label: Text('Calculate Nutrition - Item 1'),
-              ),
-
-              SizedBox(height: 8),
-              ElevatedButton.icon(
-                onPressed: () {
-                  calculateNutrition(selectedMealMethod2, selectedWeight2);
-                },
-                icon: Icon(Icons.set_meal_sharp),
-                label: Text('Calculate Nutrition - Item 2'),
-              ),
-
-              SizedBox(height: 8),
-              ElevatedButton.icon(
-                onPressed: () {
-                  calculateNutrition(selectedMealMethod3, selectedWeight3);
-                },
-                icon: Icon(Icons.food_bank_rounded),
-                label: Text('Calculate Nutrition - Item 3'),
-              ),
+              AnimatedButton(
+                  onPress: () {
+                    calculateNutrition(selectedMealMethod1, selectedWeight1);
+                    calculateNutrition(selectedMealMethod2, selectedWeight2);
+                    calculateNutrition(selectedMealMethod3, selectedWeight3);
+                  },
+                  height: 70,
+                  width: 200,
+                  text: 'Calculate Nutrition',
+                  textStyle: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                  isReverse: true,
+                  selectedTextColor: Color.fromARGB(255, 5, 3, 3),
+                  transitionType: TransitionType.LEFT_TO_RIGHT,
+                  //textStyle: CalculateNutritionTextStyle,
+                  backgroundColor: Color.fromARGB(255, 233, 223, 42),
+                  borderColor: Color.fromARGB(255, 1, 73, 22),
+                  borderRadius: 6,
+                  borderWidth: 2),
 
               // Display the nutritional information for each item
               const SizedBox(height: 20),
@@ -377,11 +397,11 @@ class _CaloriesPageState extends State<CaloriesPage> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  color: const Color.fromARGB(255, 4, 88, 7),
                 ),
               ),
               Text(
-                'Item 1:',
+                'Item 1:${selectedMealMethod1}',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text('Calories: ${calories1.toStringAsFixed(2)}'),
@@ -391,7 +411,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
               Text('Protein: ${protein1.toStringAsFixed(2)} g'),
               const SizedBox(height: 10),
               Text(
-                'Item 2:',
+                'Item 2: ${selectedMealMethod2}',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text('Calories: ${calories2.toStringAsFixed(2)}'),
@@ -401,7 +421,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
               Text('Protein: ${protein2.toStringAsFixed(2)} g'),
               const SizedBox(height: 10),
               Text(
-                'Item 3:',
+                'Item 3: ${selectedMealMethod3}',
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               Text('Calories: ${calories3.toStringAsFixed(2)}'),
@@ -412,16 +432,40 @@ class _CaloriesPageState extends State<CaloriesPage> {
 
               // Calculate button for the whole table
               const SizedBox(height: 20),
-              ElevatedButton(
+             ElevatedButton(
                 onPressed: () {
-                  calculateNutrition(selectedMealMethod1, selectedWeight1);
-                  calculateNutrition(selectedMealMethod2, selectedWeight2);
-                  calculateNutrition(selectedMealMethod3, selectedWeight3);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TotalPage(
+                        totalNutrition: totalNutrition,
+                        ),
+                    ),
+                  );
                 },
                 child: Text('Calculate All'),
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        child: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "Powerd by 13975 Pvt (Ltd)",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

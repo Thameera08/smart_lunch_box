@@ -42,8 +42,6 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
           realWeight1: realWeight1,
           realWeight2: realWeight2,
           realWeight3: realWeight3,
-
-          
         ),
       ),
     );
@@ -53,8 +51,8 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 1, 11, 44),
-        title:  Text("Meal Page"),
+        // backgroundColor: Color.fromARGB(255, 1, 11, 44),
+        title: Text("Meal Page"),
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {},
@@ -221,10 +219,29 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: navigateToCaloriesPage,
-                child: Text('Go to Calories Page'),
+                child: Text('Go to Nutrition Values Page'),
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: const BottomAppBar(
+        child: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Text(
+                  "Powerd by 13975 Pvt (Ltd)",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.blueGrey,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

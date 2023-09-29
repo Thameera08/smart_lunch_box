@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_lunch_box/components/colors.dart';
-import 'package:smart_lunch_box/screen/home.dart';
+import 'package:smart_lunch_box/screen/get_start_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black54,
         primarySwatch: customMaterialColor,
       ),
-      home: MealWeightEntryPage(),
+      home: const StartPage(),
     );
   }
 }
