@@ -7,7 +7,7 @@ class CaloriesPage extends StatefulWidget {
   final double realWeight2;
   final double realWeight3;
 
-      CaloriesPage({
+  CaloriesPage({
     required this.realWeight1,
     required this.realWeight2,
     required this.realWeight3,
@@ -431,14 +431,14 @@ class _CaloriesPageState extends State<CaloriesPage> {
 
               // Calculate button for the whole table
               const SizedBox(height: 20),
-             ElevatedButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => TotalPage(
                         totalNutrition: totalNutrition,
-                        ),
+                      ),
                     ),
                   );
                 },

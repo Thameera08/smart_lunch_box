@@ -49,15 +49,20 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
 
   @override
   Widget build(BuildContext context) {
+    //Get.put(FirstController());
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Color.fromARGB(255, 1, 11, 44),
         title: Text("Meal Page"),
         centerTitle: true,
         leading: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            print("Theme Chnage");
+            // Get.changeTheme(
+            //     Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
+          },
           child: const Icon(
-            Icons.menu,
+            Icons.mode_edit,
           ),
         ),
       ),
