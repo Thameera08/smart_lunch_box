@@ -1,11 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:smart_lunch_box/screen/calories_page.dart';
-
-// void main() {
-//   runApp(MaterialApp(
-//     home: MealWeightEntryPage(),
-//   ));
-// }
 
 class MealWeightEntryPage extends StatefulWidget {
   @override
@@ -53,7 +49,10 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Color.fromARGB(255, 1, 11, 44),
-        title: Text("Meal Page"),
+        title: Text(
+          "Meal Page",
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         leading: GestureDetector(
           onTap: () {

@@ -14,10 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Lunch Box',
-      theme: ThemeData(
-        primaryColor: Colors.black54,
-        primarySwatch: customMaterialColor,
-      ),
+      theme:
+          ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal)),
       home: const StartPage(),
     );
   }
