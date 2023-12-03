@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:smart_lunch_box/screen/calories_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MealWeightEntryPage extends StatefulWidget {
   @override
@@ -43,6 +44,25 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
     );
   }
 
+  void importFromFirebase() async {
+    // Assuming you have a 'weights' collection in Firestore
+    // and documents with fields 'weight1', 'weight2', 'weight3'
+    final DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('weights')
+        .doc('realweight')
+        .get();
+
+    if (snapshot.exists) {
+      setState(() {
+        weight1Controller.text = snapshot['weight1'].toString();
+        weight2Controller.text = snapshot['weight2'].toString();
+        weight3Controller.text = snapshot['weight3'].toString();
+      });
+    } else {
+      print('Document does not exist');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     //Get.put(FirstController());
@@ -71,6 +91,10 @@ class _MealWeightEntryPageState extends State<MealWeightEntryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ElevatedButton(
+                onPressed: importFromFirebase,
+                child: Text("Import From Firebase"),
+              ),
               Text(
                 'Enter Weights:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

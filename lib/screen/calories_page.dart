@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors, duplicate_ignore, unnecessary_brace_in_string_interps
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_button/flutter_animated_button.dart';
 import 'package:smart_lunch_box/screen/total_page.dart';
@@ -65,8 +67,8 @@ class _CaloriesPageState extends State<CaloriesPage> {
       totalCarbohydrates: 0,
       protein: 31,
     ),
-    'Dall': MealInfo(
-      name: 'Dall',
+    'Dhal': MealInfo(
+      name: 'Dhal',
       calories: 116,
       totalFat: 0.4,
       totalCarbohydrates: 20,
@@ -110,7 +112,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
         totalFat2 = totalFat;
         totalCarbohydrates2 = totalCarbohydrates;
         protein2 = protein;
-      } else if (selectedMealMethod == 'Dall') {
+      } else if (selectedMealMethod == 'Dhal') {
         calories3 = calories;
         totalFat3 = totalFat;
         totalCarbohydrates3 = totalCarbohydrates;

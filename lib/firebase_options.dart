@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:632431509181:android:3a08533cd57fd6435581d4',
     messagingSenderId: '632431509181',
     projectId: 'smart-lunch-box',
+    databaseURL: 'https://smart-lunch-box-default-rtdb.firebaseio.com',
     storageBucket: 'smart-lunch-box.appspot.com',
   );
 
@@ -62,6 +63,7 @@ class DefaultFirebaseOptions {
     appId: '1:632431509181:ios:7e8acf215b3302655581d4',
     messagingSenderId: '632431509181',
     projectId: 'smart-lunch-box',
+    databaseURL: 'https://smart-lunch-box-default-rtdb.firebaseio.com',
     storageBucket: 'smart-lunch-box.appspot.com',
     iosBundleId: 'com.example.smartLunchBox',
   );

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smart_lunch_box/components/colors.dart';
+import 'package:firebase_core/firebase_core.dart'; // Import Firebase Core
+import 'package:smart_lunch_box/firebase_options.dart';
 import 'package:smart_lunch_box/screen/get_start_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

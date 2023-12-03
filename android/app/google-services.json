@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "632431509181",
+    "firebase_url": "https://smart-lunch-box-default-rtdb.firebaseio.com",
     "project_id": "smart-lunch-box",
     "storage_bucket": "smart-lunch-box.appspot.com"
   },
