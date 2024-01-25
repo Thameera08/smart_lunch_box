@@ -48,8 +48,8 @@ class StartPage extends StatelessWidget {
                       30.0), // Rounded border for the Image
                   child: Image.asset(
                     "assets/images/startimg.jpg",
-                    width: 200,
-                    height: 200,
+                    width: 300,
+                    height: 300,
                   ),
                 ),
               ),
@@ -97,7 +97,7 @@ class StartPage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
-                  "Powerd by 13975 Pvt (Ltd)",
+                  "Code with Botson",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 12,

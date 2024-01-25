@@ -457,7 +457,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
               child: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
-                  "Powerd by 13975 Pvt (Ltd)",
+                 "Code with Botson",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 12,
